@@ -50,7 +50,7 @@ export const createNextTagVersion = async (
     });
     const QUERY = `query ($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
-    releases(first: 1) {
+    releases(first: 5) {
       nodes {
         databaseId,
         tagName
@@ -179,6 +179,7 @@ if (require.main) {
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
     const GIT_COMMIT_SHA = process.env.GIT_COMMIT_SHA!;
     const [owner, repo] = GITHUB_REPOSITORY.split("/");
+    console.log([owner, repo]);
     fetchIssues({
         GITHUB_TOKEN,
         labels: [DRAFT_LABEL],
