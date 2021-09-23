@@ -1,0 +1,9 @@
+name: New Post
+description: Post a review
+title: ""
+labels: ["Status: Post"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Review It
