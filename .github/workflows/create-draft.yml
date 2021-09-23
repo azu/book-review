@@ -25,7 +25,7 @@ jobs:
           yarn start
         working-directory: actions/create-draft
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
           GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
           DRAFT_LABEL: "Status: Post"
           GIT_COMMIT_SHA: ${{ github.sha }}
