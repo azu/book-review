@@ -1,0 +1,29 @@
+name: Create Draft
+
+on:
+  issues:
+    types: [opened, edited, deleted, labeled, unlabeled, closed]
+
+permissions:
+  issues: write
+  contents: write
+jobs:
+  create_draft:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Create Draft
+        run: |
+          yarn install
+          yarn start
+        working-directory: actions/create-draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
+          DRAFT_LABEL: "Status: Post"
+          GIT_COMMIT_SHA: ${{ github.sha }}
