@@ -1,0 +1,20 @@
+name: Setup missue
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-missue:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node
+        with:
+          node-version: 14
+        uses: actions/setup-node@v1
+      - name: setup labels
+        run: npx github-label-sync --labels labels.yml --access-token "$GITHUB_TOKEN" "$GITHUB_REPOSITORY"
+        working-directory: .github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

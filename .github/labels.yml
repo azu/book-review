@@ -1,0 +1,8 @@
+- name: "Status: Post"
+  color: "7057ff"
+  aliases: []
+  description: "Ready to Post"
+- name: "Status: Draft"
+  color: "7057ff"
+  aliases: []
+  description: "Not ready to post"
