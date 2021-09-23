@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: 'yarn'
       - name: Create Draft
         run: |
           yarn install
