@@ -1,6 +1,5 @@
 import { graphql } from "@octokit/graphql";
 import { Octokit } from "@octokit/rest";
-import { UrlWithStringQuery } from "url";
 
 export type Issue = {
     title: string;
@@ -190,6 +189,7 @@ if (require.main) {
             owner,
             repo,
         });
+        console.log("next", next);
         const body = template(res);
         const title = "Draft";
         await createDraftRelease({
