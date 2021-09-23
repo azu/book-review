@@ -1,10 +1,10 @@
-name: Setup missue
+name: Setup
 
 on:
   workflow_dispatch:
 
 jobs:
-  setup-missue:
+  setup:
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
