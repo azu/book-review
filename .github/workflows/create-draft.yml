@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: 14
           cache: 'yarn'
+          cache-dependency-path: 'actions/create-draft/yarn.lock'
       - name: Create Draft
         run: |
           yarn install
