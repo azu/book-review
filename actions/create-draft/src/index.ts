@@ -84,7 +84,8 @@ export const createNextTagVersion = async (
     }>(QUERY, { owner: options.owner, repo: options.repo });
     const initialVersion = 1;
     const currentVersion = repository.latestRelease ? parseInt(repository.latestRelease.tagName, 10) : initialVersion;
-    // first release, but has draf
+    console.log("repository", JSON.stringify(repository, null, 4));
+    // first release, but has draft
     const latestDraft = (() => {
         const release = repository.releases.nodes[0];
         if (!release) {
