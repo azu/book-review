@@ -1,4 +1,4 @@
-import { Issue } from "./index";
+import { Issue } from "./create-draft";
 
 export const generateMetaComment = (issues: Issue[]) => {
     const meta = issues.map(issue => {
@@ -7,7 +7,7 @@ export const generateMetaComment = (issues: Issue[]) => {
     return `<!-- @@github_blog_meta@@: ${JSON.stringify(meta)} -->`;
 }
 export const parseMetaComment = (body: string): string[] => {
-    const pattern = /<!-- @@github_blog_meta@@: (.+) -->/;
+    const pattern = /<!-- @@github_blog_meta@@: (.*?) -->/;
     const match = body.match(pattern);
     if (!match) {
         return [];
