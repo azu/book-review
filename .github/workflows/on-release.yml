@@ -9,6 +9,7 @@ permissions:
 jobs:
   on_release:
     runs-on: ubuntu-18.04
+    if: ${{ github.event.release.draft == false }}
     steps:
       - name: dump context
         run: echo '${{ toJSON(github) }}'
