@@ -60,7 +60,7 @@ export const fetchReleasedLabelId = async (options: { owner: string; repo: strin
             authorization: `token ${options.GITHUB_TOKEN}`
         }
     });
-    const QUERY = `query ($owner: String!, $repo: String!, labelName: String!) {
+    const QUERY = `query ($owner: String!, $repo: String!, $labelName: String!) {
   repository(owner: $owner, name: $repo) {
     label(name: $labelName){
       id
