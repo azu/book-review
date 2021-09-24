@@ -36,7 +36,7 @@ export const fetchReleaseIds = async (options: { owner: string; repo: string; ta
             authorization: `token ${options.GITHUB_TOKEN}`
         }
     });
-    const QUERY = `query ($owner: String!, $repo: String!, tagName: String!) {
+    const QUERY = `query ($owner: String!, $repo: String!, $tagName: String!) {
   repository(owner: $owner, name: $repo) {
     release(tagName: $tagName){
       description
