@@ -23,9 +23,10 @@ export const closeIssues = async (options: { issueIds: string[]; closedLabelIds:
     }).join("\n")
     }
 }`;
-    await graphqlWithAuth<{}>(QUERY, {
+    const res = await graphqlWithAuth<{}>(QUERY, {
         labelIds: options.closedLabelIds
     });
+    console.log("close issues", res)
     return;
 
 }
