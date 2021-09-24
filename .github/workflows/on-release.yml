@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-18.04
     if: ${{ github.event.release.draft == false }}
     steps:
-      - name: dump context
-        run: echo '${{ toJSON(github) }}'
       - name: checkout
         uses: actions/checkout@v2
       - name: setup Node
