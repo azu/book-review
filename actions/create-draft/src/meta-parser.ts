@@ -1,5 +1,5 @@
 import { Issue } from "./create-draft";
-
+// <!-- @@github_blog_meta@@: {meta} --> format
 export const generateMetaComment = (issues: Issue[]) => {
     const meta = issues.map(issue => {
         return issue.id
