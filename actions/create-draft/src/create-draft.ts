@@ -59,6 +59,7 @@ export const createNextTagVersion = async (
         tagName
         isDraft
       }
+      totalCount
     }
     latestRelease {
       isDraft
