@@ -1,17 +1,13 @@
-name: Create Draft
+name: On Release
 
 on:
-  issues:
-    types: [opened, edited, deleted, labeled, unlabeled, closed]
-  push:
-    branches:
-      - main
-
+  release:
+    types: [released]
 permissions:
-  issues: read
-  contents: write
+  issues: write
+  contents: read
 jobs:
-  create_draft:
+  on_release:
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
@@ -25,10 +21,10 @@ jobs:
       - name: Create Draft
         run: |
           yarn install
-          yarn run create-draft
+          yarn run on-release
         working-directory: actions/create-draft
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
-          GIT_COMMIT_SHA: ${{ github.sha }}
-          DRAFT_LABEL: "Status: Draft"
+          RELEASED_TAG_NAME: ${{ github.event.release.tag_name }}
+          RELEASED_LABEL: "Status: Post"

@@ -14,7 +14,8 @@
   "license": "MIT",
   "author": "azu",
   "scripts": {
-    "start": "ts-node-transpile-only src/index.ts",
+    "create-draft": "ts-node-transpile-only src/create-draft.ts",
+    "on-release": "ts-node-transpile-only src/on-release.ts",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
     "build": "tsc -p . && tsc -p ./tsconfig.module.json",
     "watch": "tsc -p . --watch",

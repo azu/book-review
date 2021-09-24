@@ -1,7 +1,9 @@
 import { graphql } from "@octokit/graphql";
 import { Octokit } from "@octokit/rest";
+import { generateMetaComment } from "./meta-parser";
 
 export type Issue = {
+    id: string;
     title: string;
     body: string;
     url: string;
@@ -19,6 +21,7 @@ export const fetchIssues = async (
   repository(owner: $owner, name: $repo) {
     issues(first: 20, filterBy: {labels: $labels}) {
       nodes {
+        id
         title
         body
         url
@@ -106,14 +109,14 @@ export const createNextTagVersion = async (
     // first release
     if (repository.latestRelease === null) {
         return {
-            tagName: `v${currentVersion}`,
+            tagName: `${currentVersion}`,
             type: "new"
         }
     }
-    // v1, v2 ...
+    // 1, 2 ...
     if (currentVersion === repository.releases.totalCount) {
         return {
-            tagName: `v${currentVersion + 1}`,
+            tagName: `${currentVersion + 1}`,
             type: "new"
         }
     }
@@ -173,28 +176,27 @@ async function createDraftRelease({
     }
 }
 
-if (require.main) {
+async function main() {
     const GITHUB_REPOSITORY = process.env.GITHUB_REPOSITORY!
     const DRAFT_LABEL = process.env.DRAFT_LABEL!
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
     const GIT_COMMIT_SHA = process.env.GIT_COMMIT_SHA!;
     const [owner, repo] = GITHUB_REPOSITORY.split("/");
-    console.log("draft log", {
-        owner, repo
-    });
+    console.log([owner, repo]);
     fetchIssues({
         GITHUB_TOKEN,
         labels: [DRAFT_LABEL],
         owner,
         repo
-    }).then(async res => {
+    }).then(async issues => {
         const next = await createNextTagVersion({
             GITHUB_TOKEN,
             owner,
             repo,
         });
         console.log("next version", next);
-        const body = template(res);
+        const body = template(issues);
+        const metaComment = generateMetaComment(issues);
         const title = "Draft";
         await createDraftRelease({
             owner,
@@ -205,7 +207,14 @@ if (require.main) {
             tagName: next.tagName,
             releaseId: next.releaseId,
             releaseName: title,
-            releaseBody: body
+            releaseBody: body + "\n\n" + metaComment
         })
+    })
+}
+
+if (require.main) {
+    main().catch(error => {
+        console.error(error);
+        process.exit(1);
     })
 }
