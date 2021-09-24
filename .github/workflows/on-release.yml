@@ -2,7 +2,7 @@ name: On Release
 
 on:
   release:
-    types: [released, edited]
+    types: [released]
 permissions:
   issues: write
   contents: read
