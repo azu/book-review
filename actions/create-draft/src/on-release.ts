@@ -1,5 +1,4 @@
 import { graphql } from "@octokit/graphql";
-import { Octokit } from "@octokit/rest";
 import { parseMetaComment } from "./meta-parser";
 
 export type Issue = {
@@ -24,7 +23,7 @@ export const closeIssues = async (options: { issueIds: string[]; closedLabelIds:
     }).join("\n")
     }
 `;
-    const res = await graphqlWithAuth<{}>(QUERY, {
+    await graphqlWithAuth<{}>(QUERY, {
         labelIds: options.closedLabelIds
     });
     return;
@@ -39,7 +38,7 @@ export const fetchReleaseIds = async (options: { owner: string; repo: string; ta
     });
     const QUERY = `query ($owner: String!, $repo: String!, tagName: String!) {
   repository(owner: $owner, name: $repo) {
-    release(tagName: $tagName"){
+    release(tagName: $tagName){
       description
     }
   }
@@ -48,7 +47,7 @@ export const fetchReleaseIds = async (options: { owner: string; repo: string; ta
     const res = await graphqlWithAuth<{
         repository: {
             release: {
-                description
+                description: string
             }
         }
     }>(QUERY, { owner: options.owner, repo: options.repo, tagName: options.tagName });
@@ -72,7 +71,7 @@ export const fetchReleasedLabelId = async (options: { owner: string; repo: strin
     const res = await graphqlWithAuth<{
         repository: {
             label: {
-                id
+                id: string;
             }
         }
     }>(QUERY, { owner: options.owner, repo: options.repo, labelName: options.labelName });
