@@ -1,6 +1,7 @@
 import { graphql } from "@octokit/graphql";
 import { Octokit } from "@octokit/rest";
 import { generateMetaComment } from "./meta-parser";
+import { template } from "./template";
 
 export type Issue = {
     id: string;
@@ -124,14 +125,6 @@ export const createNextTagVersion = async (
     throw new Error("Unknown response:" + JSON.stringify(repository, null, 4));
 };
 
-const template = (issues: Issue[]) => {
-    return issues.map(issue => {
-        return `# ${issue.title} #${issue.number}
-
-${issue.body}    
-`.trimEnd();
-    }).join("\n\n");
-}
 
 async function createDraftRelease({
                                       type,
