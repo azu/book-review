@@ -82,6 +82,15 @@ export const createNextTagVersion = async (
             } | null
         };
     }>(QUERY, { owner: options.owner, repo: options.repo });
+
+    const octokit = new Octokit({
+        auth:options.GITHUB_TOKEN
+    });
+    const rele = await octokit.repos.listReleases({
+        owner: options.owner,
+        repo: options.repo,
+    });
+    console.log("rele", JSON.stringify(rele,null,4));
     const initialVersion = 1;
     const currentVersion = repository.latestRelease ? parseInt(repository.latestRelease.tagName, 10) : initialVersion;
     console.log("repository", JSON.stringify(repository, null, 4));
