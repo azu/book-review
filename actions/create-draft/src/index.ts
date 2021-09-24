@@ -82,18 +82,9 @@ export const createNextTagVersion = async (
             } | null
         };
     }>(QUERY, { owner: options.owner, repo: options.repo });
-
-    const octokit = new Octokit({
-        auth:options.GITHUB_TOKEN
-    });
-    const rele = await octokit.repos.listReleases({
-        owner: options.owner,
-        repo: options.repo,
-    });
-    console.log("rele", JSON.stringify(rele,null,4));
     const initialVersion = 1;
     const currentVersion = repository.latestRelease ? parseInt(repository.latestRelease.tagName, 10) : initialVersion;
-    console.log("repository", JSON.stringify(repository, null, 4));
+    console.log("repository releases", JSON.stringify(repository, null, 4));
     // first release, but has draft
     const latestDraft = (() => {
         const release = repository.releases.nodes[0];
@@ -188,7 +179,9 @@ if (require.main) {
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
     const GIT_COMMIT_SHA = process.env.GIT_COMMIT_SHA!;
     const [owner, repo] = GITHUB_REPOSITORY.split("/");
-    console.log([owner, repo]);
+    console.log("draft log", {
+        owner, repo
+    });
     fetchIssues({
         GITHUB_TOKEN,
         labels: [DRAFT_LABEL],
@@ -200,7 +193,7 @@ if (require.main) {
             owner,
             repo,
         });
-        console.log("next", next);
+        console.log("next version", next);
         const body = template(res);
         const title = "Draft";
         await createDraftRelease({
