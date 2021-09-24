@@ -120,7 +120,7 @@ export const createNextTagVersion = async (
             type: "new"
         }
     }
-    throw new Error("Unknown response:" + repository);
+    throw new Error("Unknown response:" + JSON.stringify(repository, null, 4));
 };
 
 const template = (issues: Issue[]) => {
