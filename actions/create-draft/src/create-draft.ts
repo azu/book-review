@@ -183,32 +183,32 @@ async function main() {
     const GIT_COMMIT_SHA = process.env.GIT_COMMIT_SHA!;
     const [owner, repo] = GITHUB_REPOSITORY.split("/");
     console.log([owner, repo]);
-    fetchIssues({
+    const issues = await fetchIssues({
         GITHUB_TOKEN,
         labels: [DRAFT_LABEL],
         owner,
         repo
-    }).then(async issues => {
-        const next = await createNextTagVersion({
-            GITHUB_TOKEN,
-            owner,
-            repo,
-        });
-        console.log("next version", next);
-        const body = template(issues);
-        const metaComment = generateMetaComment(issues);
-        const title = "Draft";
-        await createDraftRelease({
-            owner,
-            repo,
-            GITHUB_TOKEN,
-            commitSha: GIT_COMMIT_SHA,
-            type: next.type,
-            tagName: next.tagName,
-            releaseId: next.releaseId,
-            releaseName: title,
-            releaseBody: body + "\n\n" + metaComment
-        })
+    });
+    console.log("issues", issues);
+    const next = await createNextTagVersion({
+        GITHUB_TOKEN,
+        owner,
+        repo,
+    });
+    console.log("next version", next);
+    const body = template(issues);
+    const metaComment = generateMetaComment(issues);
+    const title = "Draft";
+    await createDraftRelease({
+        owner,
+        repo,
+        GITHUB_TOKEN,
+        commitSha: GIT_COMMIT_SHA,
+        type: next.type,
+        tagName: next.tagName,
+        releaseId: next.releaseId,
+        releaseName: title,
+        releaseBody: body + "\n\n" + metaComment
     })
 }
 
