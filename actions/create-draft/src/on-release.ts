@@ -14,8 +14,8 @@ export const closeIssues = async (options: { issueIds: string[]; closedLabelIds:
         }
     });
     const QUERY = `mutation CloseMutation($labelIds: [String]) {
-    ${options.issueIds.map(issueId => {
-        return `updateIssue(input: { id: "${issueId}", labelIds: $labelIds, state: CLOSED }){
+    ${options.issueIds.map((issueId, index) => {
+        return `req${index}: updateIssue(input: { id: "${issueId}", labelIds: $labelIds, state: CLOSED }){
     issue {
       id
     }
@@ -26,7 +26,7 @@ export const closeIssues = async (options: { issueIds: string[]; closedLabelIds:
     const res = await graphqlWithAuth<{}>(QUERY, {
         labelIds: options.closedLabelIds
     });
-    console.log("close issues", res)
+    console.log("close issues", res);
     return;
 
 }
