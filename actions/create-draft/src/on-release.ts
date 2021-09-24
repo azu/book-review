@@ -22,7 +22,7 @@ export const closeIssues = async (options: { issueIds: string[]; closedLabelIds:
   }`
     }).join("\n")
     }
-`;
+}`;
     await graphqlWithAuth<{}>(QUERY, {
         labelIds: options.closedLabelIds
     });
