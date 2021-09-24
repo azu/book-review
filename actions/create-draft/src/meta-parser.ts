@@ -12,6 +12,6 @@ export const parseMetaComment = (body: string): string[] => {
     if (!match) {
         return [];
     }
-    const ids = JSON.parse(match[0]);
+    const ids = JSON.parse(match[1]);
     return ids as string[];
 }
