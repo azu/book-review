@@ -9,7 +9,7 @@ permissions:
 jobs:
   on_release:
     runs-on: ubuntu-18.04
-    if: ${{ github.event.release.draft == false }}
+    if: ${{ github.event.release.draft == false && github.event.changes.name.from != 'Draft' }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
