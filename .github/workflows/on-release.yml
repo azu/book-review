@@ -27,4 +27,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
           RELEASED_TAG_NAME: ${{ github.event.release.tag_name }}
-          RELEASED_LABEL: "Status: Post"
+          RELEASED_LABEL: "Status: Released"
