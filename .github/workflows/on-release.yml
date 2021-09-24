@@ -2,7 +2,6 @@ name: On Release
 
 on:
   release:
-    types: [released]
 permissions:
   issues: write
   contents: read
@@ -10,6 +9,8 @@ jobs:
   on_release:
     runs-on: ubuntu-18.04
     steps:
+      - name: dump context
+        run: echo '${{ toJSON(github) }}'
       - name: checkout
         uses: actions/checkout@v2
       - name: setup Node
