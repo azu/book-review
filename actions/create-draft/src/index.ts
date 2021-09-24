@@ -125,7 +125,7 @@ const template = (issues: Issue[]) => {
         return `# ${issue.title} #${issue.number}
 
 ${issue.body}    
-`
+`.trimEnd();
     }).join("\n\n");
 }
 
