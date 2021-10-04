@@ -28,7 +28,7 @@ jobs:
           yarn run create-draft
         working-directory: actions/create-draft
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
           GIT_COMMIT_SHA: ${{ github.sha }}
           DRAFT_LABEL: "Status: Draft"
