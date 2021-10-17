@@ -1,6 +1,6 @@
 name: New Post
 description: Post a review
-title: ""
+title: "[book title]"
 labels: ["Status: Post"]
 body:
   - type: markdown
