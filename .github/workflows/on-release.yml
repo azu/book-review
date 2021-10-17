@@ -25,7 +25,7 @@ jobs:
           yarn run on-release
         working-directory: actions/create-draft
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
           RELEASED_TAG_NAME: ${{ github.event.release.tag_name }}
           RELEASED_LABEL: "Status: Released"
