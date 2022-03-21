@@ -163,7 +163,11 @@ async function main() {
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
     const GIT_COMMIT_SHA = process.env.GIT_COMMIT_SHA!;
     const [owner, repo] = GITHUB_REPOSITORY.split("/");
-    console.log([owner, repo]);
+    console.log({
+        owner,
+        repo,
+        DRAFT_LABEL
+    });
     const issues = await fetchIssues({
         GITHUB_TOKEN,
         labels: [DRAFT_LABEL],
