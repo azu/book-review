@@ -13,7 +13,7 @@ export const closeIssues = async (options: { issueIds: string[]; closedLabelIds:
             authorization: `token ${options.GITHUB_TOKEN}`
         }
     });
-    const QUERY = `mutation CloseMutation($labelIds: [String]) {
+    const QUERY = `mutation CloseMutation($labelIds: [String!]) {
     ${options.issueIds.map((issueId, index) => {
         return `req${index}: updateIssue(input: { id: "${issueId}", labelIds: $labelIds, state: CLOSED }){
     issue {
