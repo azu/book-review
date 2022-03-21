@@ -54,17 +54,13 @@ export const createNextTagVersion = async (
     });
     const QUERY = `query ($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
-    releases(last: 5, orderBy: { field: CREATED_AT, direction: DESC }) {
+    releases(last: 10, orderBy: { field: CREATED_AT, direction: DESC }) {
       nodes {
         databaseId,
         tagName
         isDraft
       }
       totalCount
-    }
-    latestRelease {
-      isDraft
-      tagName
     }
   }
 }
@@ -80,27 +76,18 @@ export const createNextTagVersion = async (
                 }[]
                 totalCount: number;
             },
-            latestRelease: {
-                databaseId: number,
-                isDraft: boolean,
-                tagName: string;
-            } | null
         };
     }>(QUERY, { owner: options.owner, repo: options.repo });
     const initialVersion = 1;
-    const currentVersion = repository.latestRelease ? parseInt(repository.latestRelease.tagName, 10) : initialVersion;
+    const latestStableRelease = repository.releases.nodes.find(node => {
+        return !node.isDraft
+    });
+    const currentReleasedVersion = latestStableRelease ? parseInt(latestStableRelease.tagName, 10) : initialVersion;
+    const latestDraft = repository.releases.nodes.find(node => node.isDraft);
     console.log("repository releases", JSON.stringify(repository, null, 4));
-    // first release, but has draft
-    const latestDraft = (() => {
-        const release = repository.releases.nodes[0];
-        if (!release) {
-            return;
-        }
-        if (release.isDraft) {
-            return release
-        }
-        return;
-    })();
+    console.log("latestStableRelease", latestStableRelease);
+    console.log("latestDraft", latestDraft);
+    // if draft is found, update it
     if (latestDraft) {
         return {
             type: "update",
@@ -109,16 +96,16 @@ export const createNextTagVersion = async (
         }
     }
     // first release
-    if (repository.latestRelease === null) {
+    if (!latestStableRelease) {
         return {
-            tagName: `${currentVersion}`,
+            tagName: `${currentReleasedVersion}`,
             type: "new"
         }
     }
     // 1, 2 ...
-    if (currentVersion === repository.releases.totalCount) {
+    if (currentReleasedVersion === repository.releases.totalCount) {
         return {
-            tagName: `${currentVersion + 1}`,
+            tagName: `${currentReleasedVersion + 1}`,
             type: "new"
         }
     }
