@@ -18,7 +18,7 @@ export const fetchIssues = async (
             authorization: `token ${options.GITHUB_TOKEN}`
         }
     });
-    const QUERY = `query ($owner: String!, $repo: String!, $labels: [String]) {
+    const QUERY = `query ($owner: String!, $repo: String!, $labels: [String!]) {
   repository(owner: $owner, name: $repo) {
     issues(first: 20, filterBy: {labels: $labels}) {
       nodes {
