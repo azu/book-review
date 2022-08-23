@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   on_release:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: ${{ github.event.release.draft == false && github.event.changes.name.from != 'Draft' }}
     steps:
       - name: checkout
