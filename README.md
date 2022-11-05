@@ -24,7 +24,7 @@
 このブログシステムを使いたい人向けのガイドです。
 
 1. このリポジトリをForkする: <https://github.com/azu/book-review/fork>
-2. Forkしたら、リポジトリの `https://github.com/{owner}/{repo}/actions/workflows/setup.yml` にアクセスし"Run Workflow"を実行する
+2. Forkしたリポジトリの `https://github.com/{owner}/{repo}/actions/workflows/setup.yml` にアクセスし"Run Workflow"を実行する
    - 必要なラベルなどがセットアップされます
 
 ## 使い方
