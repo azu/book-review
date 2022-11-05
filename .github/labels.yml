@@ -1,8 +1,8 @@
 - name: "Status: Released"
   color: "7057ff"
   aliases: []
-  description: "Ready to Post"
+  description: "Posted"
 - name: "Status: Draft"
   color: "7057ff"
   aliases: []
-  description: "Not ready to post"
+  description: "Draft Issue"
