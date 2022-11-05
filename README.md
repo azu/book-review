@@ -66,6 +66,8 @@
   - <https://github.com/azu/book-review/releases>には全文検索がついています
 - Markdown
   - GitHub Issuesに書けるMarkdownは全て対応しています
+- アクセス解析
+  - Insight > TrafficからPV数を確認できます
 
 ## Tips
 
