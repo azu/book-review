@@ -88,6 +88,7 @@ export const createNextTagVersion = async (
     console.log("latestStableRelease", latestStableRelease);
     console.log("currentReleasedVersion", currentReleasedVersion);
     console.log("latestDraft", latestDraft);
+    console.log("repository.releases.totalCount", repository.releases.totalCount);
     // if draft is found, update it
     if (latestDraft) {
         return {
@@ -104,7 +105,7 @@ export const createNextTagVersion = async (
         }
     }
     // 1, 2 ...
-    if (currentReleasedVersion === repository.releases.totalCount) {
+    if (!latestDraft && currentReleasedVersion === repository.releases.totalCount) {
         return {
             tagName: `${currentReleasedVersion + 1}`,
             type: "new"
