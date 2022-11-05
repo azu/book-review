@@ -40,3 +40,8 @@
   - リリース時に"Create a discussion for this release"を選択することでコメント欄として使えるDiscussion連携ができる
   - また、リリースごとにリアクションも設定できる
 
+## Tips
+
+### TwitterのTweet URLを埋め込みたい
+
+- [Poet.so | Create Beautiful Images of Twitter Posts](https://poet.so/) を使うとTweetのURLを画像に変換できる
