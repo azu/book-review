@@ -86,7 +86,10 @@ async function main() {
     const RELEASED_TAG_NAME = process.env.RELEASED_TAG_NAME!;
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
     const [owner, repo] = GITHUB_REPOSITORY.split("/");
-    console.log([owner, repo]);
+    console.log("Release Repository", {
+        owner,
+        repo
+    });
     const releasedIds = await fetchReleaseIds({
         owner,
         repo,

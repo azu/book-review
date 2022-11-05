@@ -86,6 +86,7 @@ export const createNextTagVersion = async (
     const latestDraft = repository.releases.nodes.find(node => node.isDraft);
     console.log("repository releases", JSON.stringify(repository, null, 4));
     console.log("latestStableRelease", latestStableRelease);
+    console.log("currentReleasedVersion", currentReleasedVersion);
     console.log("latestDraft", latestDraft);
     // if draft is found, update it
     if (latestDraft) {
