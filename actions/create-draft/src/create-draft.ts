@@ -23,7 +23,7 @@ export const fetchIssues = async (
     });
     const QUERY = `query ($owner: String!, $repo: String!, $labels: [String!]) {
   repository(owner: $owner, name: $repo) {
-    issues(first: 20, filterBy: {labels: $labels}) {
+    issues(first: 20, filterBy: {labels: $labels, states: OPEN}) {
       nodes {
         id
         title
