@@ -68,6 +68,8 @@
   - GitHub Issuesに書けるMarkdownは全て対応しています
 - アクセス解析
   - Insight > TrafficからPV数を確認できます
+- OGPイメージ
+  - GitHubが自動的に生成してくれます
 
 ## Tips
 
