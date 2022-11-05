@@ -60,7 +60,7 @@ export const createNextTagVersion = async (
     });
     const QUERY = `query ($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
-    releases(last: 10, orderBy: { field: CREATED_AT, direction: DESC }) {
+    releases(first: 20, orderBy: { field: CREATED_AT, direction: DESC }) {
       nodes {
         databaseId,
         tagName
