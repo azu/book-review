@@ -6,7 +6,7 @@ import type { Issue } from "./create-draft";
  */
 export const template = (issues: Issue[]): string => {
     return issues.map(issue => {
-        return `# ${issue.title} #${issue.number}
+        return `# ${issue.title} by @${issue.author.login} #${issue.number}
 
 ${issue.body}    
 `.trimEnd();

@@ -9,6 +9,9 @@ export type Issue = {
     body: string;
     url: string;
     number: number;
+    author: {
+        login: string;
+    }
 }
 export const fetchIssues = async (
     options: { owner: string; repo: string; labels: string[]; GITHUB_TOKEN: string; },
@@ -27,6 +30,9 @@ export const fetchIssues = async (
         body
         url
         number
+        author {
+          login
+        }
       }
     }
   }
@@ -78,17 +84,18 @@ export const createNextTagVersion = async (
             },
         };
     }>(QUERY, { owner: options.owner, repo: options.repo });
-    const initialVersion = 1;
+    const initialVersion = 0;
     const latestStableRelease = repository.releases.nodes.find(node => {
         return !node.isDraft
     });
     const currentReleasedVersion = latestStableRelease ? parseInt(latestStableRelease.tagName, 10) : initialVersion;
     const latestDraft = repository.releases.nodes.find(node => node.isDraft);
-    console.log("repository releases", JSON.stringify(repository, null, 4));
-    console.log("latestStableRelease", latestStableRelease);
-    console.log("currentReleasedVersion", currentReleasedVersion);
-    console.log("latestDraft", latestDraft);
-    console.log("repository.releases.totalCount", repository.releases.totalCount);
+    console.log("current release status", {
+        latestDraft,
+        latestStableRelease,
+        currentReleasedVersion,
+        repository: JSON.stringify(repository, null, 4)
+    })
     // if draft is found, update it
     if (latestDraft) {
         return {
@@ -96,22 +103,13 @@ export const createNextTagVersion = async (
             tagName: latestDraft.tagName,
             releaseId: latestDraft.databaseId
         }
-    }
-    // first release
-    if (!latestStableRelease) {
-        return {
-            tagName: `${currentReleasedVersion}`,
-            type: "new"
-        }
-    }
-    // 1, 2 ...
-    if (!latestDraft && currentReleasedVersion === repository.releases.totalCount) {
+    } else {
+        // if no draft is found, create a new one with latest + 1
         return {
             tagName: `${currentReleasedVersion + 1}`,
             type: "new"
         }
     }
-    throw new Error("Unknown response:" + JSON.stringify(repository, null, 4));
 };
 
 
@@ -177,6 +175,10 @@ async function main() {
         repo
     });
     console.log("issues", issues);
+    if (issues.length === 0) {
+        console.log("no issues found with label", DRAFT_LABEL);
+        return;
+    }
     const next = await createNextTagVersion({
         GITHUB_TOKEN,
         owner,
