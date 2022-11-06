@@ -78,6 +78,10 @@
   - Insight > TrafficからPV数を確認できます
 - OGPイメージ
   - GitHubが自動的に生成してくれます
+- ワークフロー
+  - GitHub Actionsで `on: release` のWorkflowで公開時にWorkflowを実行できます
+  - リポジトリのWebhook設定で Releases のWebhookを設定できます
+  - e.g. 記事を公開するときにSNSにポストするなど
 
 ## Tips
 
