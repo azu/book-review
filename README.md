@@ -65,6 +65,8 @@
   - リポジトリに書き込めるユーザーを制限することで、執筆者を管理できます
   - Issueを編集すれば、共同編集ができます
   - Issueを立てた人が、そのIssueの執筆者となります
+- 著者表記
+  - 記事中で `@azu` のようにMentionを入れると、自動的にContributorsとして記事の下部に表示されます。
 - 検索
   - <https://github.com/azu/book-review/releases>には全文検索がついています
 - Markdown
