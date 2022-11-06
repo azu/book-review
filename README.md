@@ -49,6 +49,7 @@
   - [GitHub Projects](https://docs.github.com/ja/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)を使うことで、ドラフトや公開済みのIssueを管理できます
   - `Status: Draft`ラベル: ドラフト
   - `Status: Released`ラベル: 公開済み
+  - ラベルは setup.yml のworkflowを実行すると追加できます
 - テンプレート
   - [actions/create-draft/src/template.ts](actions/create-draft/src/template.ts) を編集する
 - タグ = ラベル
