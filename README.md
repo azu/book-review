@@ -4,7 +4,8 @@
 
 ## 読み方
 
-- <https://github.com/azu/book-review/releases> に記事の一覧があります
+- 最新の記事: <https://github.com/azu/book-review/releases/latest>
+- 記事の一覧: <https://github.com/azu/book-review/releases>
 - 書籍ごとの感想は[Issue](https://github.com/azu/book-review/issues?q=is%3Aissue+is%3Aclosed+label%3A%22Status%3A+Released%22)ごとに書かれています
 
 ## 更新の購読方法
