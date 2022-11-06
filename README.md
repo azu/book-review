@@ -46,10 +46,14 @@
 
 - スクラップ機能
   - Issueごとにスクラップを書いて、Releasesでまとめて1つの記事として公開できます
-- ドラフト
+- ドラフト と 公開済みのライフサイクル
   - Issueが個別のドラフトになります
   - `Status: Draft` ラベルをつけたIssueをドフラトとして扱います
-  - ラベルがついてないIssueは対象外となるので、ドラフトではないIssueも混在できます
+    - ラベルがついてないIssueは対象外となるので、ドラフトではないIssueも混在できます
+  - Issueが編集されるたびにGitHub Actionsで、GitHub Releasesにドラフトリリースノートを作成します
+    - このドラフトリリースノートには、その時点で`Status: Draft` ラベルがついたIssueが全てまとめられています
+  - ドラフトリリースノートをPublishすると、`Status: Draft` ラベルがついたIssueが全て自動でクローズされ、`Status: Released`ラベルを付与します
+  - このライフサイクルは[.github/workflows/create-draft.yml](.github/workflows/create-draft.yml)が処理しています
 - プロジェクト管理
   - [GitHub Projects](https://docs.github.com/ja/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)を使うことで、ドラフトや公開済みのIssueを管理できます
   - `Status: Draft`ラベル: ドラフト
