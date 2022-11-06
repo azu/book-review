@@ -73,6 +73,7 @@
 - Markdown
   - GitHub Issuesに書けるMarkdownは全て対応しています
   - [Basic writing and formatting syntax - GitHub Docs](https://docs.github.com/ja/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+  - [Working with advanced formatting - GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting)
 - アクセス解析
   - Insight > TrafficからPV数を確認できます
 - OGPイメージ
