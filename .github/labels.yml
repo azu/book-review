@@ -1,7 +1,7 @@
 - name: "Status: Released"
-  color: "7057ff"
+  color: "E90D60"
   aliases: []
-  description: "Posted"
+  description: "Posted Issue"
 - name: "Status: Draft"
   color: "7057ff"
   aliases: []
