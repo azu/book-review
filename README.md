@@ -11,9 +11,12 @@
 ## 更新の購読方法
 
 - リポジトリの Watch →　Custom →　Releases を購読するとリリースだけを購読できます
+  - GitHubアカウントが必要です
   - [GitHub Notification](https://github.com/settings/notifications)に基づいた通知方法で更新を通知します
   - デフォルトでは[Notifications](https://github.com/notifications?query=is%3Arelease)とGitHubに登録してるメールに通知が来ます
 - RSSで読みたい場合は <https://github.com/azu/book-review/releases.atom> を購読してください
+  - こちらはGitHubアカウントは不要です
+  - 任意のRSSリーダやSlack(`/feed subscribe https://github.com/azu/book-review/releases.atom`)などで購読できます
 
 ## リアクションの方法
 
