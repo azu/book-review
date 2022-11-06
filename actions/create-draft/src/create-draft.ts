@@ -12,6 +12,12 @@ export type Issue = {
     author: {
         login: string;
     }
+    labels: {
+        nodes: {
+            name: string;
+            color: string;
+        }[]
+    }
 }
 export const fetchIssues = async (
     options: { owner: string; repo: string; labels: string[]; GITHUB_TOKEN: string; },
@@ -32,6 +38,12 @@ export const fetchIssues = async (
         number
         author {
           login
+        }
+        labels(first:10){
+          nodes {
+            name
+            color
+          }
         }
       }
     }
