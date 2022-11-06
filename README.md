@@ -18,7 +18,7 @@
   - こちらはGitHubアカウントは不要です
   - 任意のRSSリーダやSlack(`/feed subscribe https://github.com/azu/book-review/releases.atom`)などで購読できます
 
-## リアクションの方法
+## 記事へのリアクション方法
 
 - 各記事の下部にはリアクションボタンがあります
 - 各記事に紐づくDiscussionsページがあり、Discussionsページにコメントを書くこともできます
