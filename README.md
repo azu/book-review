@@ -50,7 +50,7 @@
   - `Status: Draft`ラベル: ドラフト
   - `Status: Released`ラベル: 公開済み
 - テンプレート
-  - actions/create-draft/src/template.ts を編集する
+  - [actions/create-draft/src/template.ts](actions/create-draft/src/template.ts) を編集する
 - タグ = ラベル
 - 画像/動画サポート
   - Issueにそれぞれアップロードできます
