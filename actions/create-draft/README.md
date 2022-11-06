@@ -2,15 +2,19 @@
 
 Create a draft release from issues
 
-## Install
-
-Install with [npm](https://www.npmjs.com/):
-
-    npm install create-draft
-
 ## Usage
 
-- [ ] Write usage instructions
+Create draft release from issues
+
+```
+npm run create-draft
+```
+
+OnReleased hooks
+
+```
+npm run on-release
+```
 
 ## Changelog
 

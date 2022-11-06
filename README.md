@@ -93,3 +93,9 @@
 ### TwitterのTweet URLを埋め込みたい
 
 - [Poet.so | Create Beautiful Images of Twitter Posts](https://poet.so/) を使うとTweetのURLを画像に変換できる
+
+## LICENSE
+
+- ブログシステムのコードはMITライセンス (c) azu
+  - <https://github.com/azu/book-review/blob/main/actions/create-draft/LICENSE>
+- ブログ記事はリポジトリ所有者が著作権を保持します
