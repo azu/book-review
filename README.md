@@ -62,6 +62,8 @@
 - テンプレート
   - [actions/create-draft/src/template.ts](actions/create-draft/src/template.ts) を編集する
 - タグ = ラベル
+  - テンプレートを編集して、ラベルをタグとして扱うこともできます
+  - https://github.com/jser/blog-example
 - 画像/動画サポート
   - Issueにそれぞれアップロードできます
 - RSS
