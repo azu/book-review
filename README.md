@@ -29,10 +29,14 @@
 
 このブログシステムを使いたい人向けのガイドです。
 
+- 紹介記事: [1クリックで始めるGitHubリリース as a ブログ | Web Scratch](https://efcl.info/2022/11/06/github-releases-as-a-blog/)
+
+## セットアップ手順
+
 1. このリポジトリをテンプレートにして新しいリポジトリを作成: <https://github.com/azu/book-review/generate>
 2. 作成したリポジトリの `https://github.com/{owner}/{repo}/actions/workflows/setup.yml` にアクセスし"Run Workflow"を実行する
    - 必要なラベルなどがセットアップされます
-3. [必要なら] リポジトリのSettingsからDiscussionsを有効にする
+3. [オプショナル] リポジトリのSettingsからDiscussionsを有効にする
    - Discussionsをブログへのコメントする場所として利用できます
 
 ## 使い方
