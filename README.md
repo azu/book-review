@@ -102,11 +102,11 @@
 
 ### TwitterのTweet URLを埋め込みたい
 
-- [Poet.so | Create Beautiful Images of Twitter Posts](https://poet.so/) を使うとTweetのURLを画像に変換できる
+- [Poet.so | Create Beautiful Images of Twitter Posts](https://poet.so/) を使うとTweetのURLを画像に変換できます
 
 ### Amazonの書影を埋め込みたい
 
-- [Amazon Cover Code](https://amazon-cover-code.deno.dev/) でMarkdownの画像付きリンクを作成で切る
+- [Amazon Cover Code](https://amazon-cover-code.deno.dev/) でMarkdownの画像付きリンクを作成できます
 
 ## LICENSE
 
